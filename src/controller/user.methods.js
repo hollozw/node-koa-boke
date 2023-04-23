@@ -1,4 +1,4 @@
-const { createUser, findUser } = require("../service/user.service");
+const { createUser, findUser, JwtUser } = require("../service/user.service");
 
 class userController {
   /**
@@ -24,15 +24,17 @@ class userController {
    * 用户登录路由
    */
   async Landing(ctx, next) {
-    const { username} = ctx.request.body
-    const {user_name, id} = await findUser(username)
+    const { username } = ctx.request.body;
+    const { id } = await findUser(username);
+    const token = JwtUser(id, username);
     ctx.body = {
       code: 0,
       message: "success",
       result: {
         id,
-        user_name: username
+        user_name: username,
       },
+      token,
     };
   }
 }

@@ -1,4 +1,5 @@
 const User_information = require("../model/use.model");
+const jwt = require("jsonwebtoken");
 
 class UserService {
   // 注册接口
@@ -18,7 +19,20 @@ class UserService {
         user_name,
       },
     });
-    return res[0].dataValues
+    return res[0].dataValues;
+  }
+  /**
+   * 自动生成token方法
+   */
+  JwtUser(id, user_name) {
+    const rules = { id, userName: user_name };
+    var token = jwt.sign(
+      {
+        data: rules,
+      },
+      "secret"
+    );
+    return token;
   }
 }
 
