@@ -1,2 +1,8 @@
-# node-koa-boke
-个人博客(node-koa部分)
+- server层操作数据库
+  - 安装对象的插件 npm install mysql2 sequelize
+- router层
+  - 将不同的url转发给控制器的不同方法
+- model层
+  - 操控数据库
+- middleware层
+  - 用于解析格式
