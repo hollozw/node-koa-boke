@@ -27,12 +27,13 @@ class userController {
     const { username } = ctx.request.body;
     const { id } = await findUser(username);
     const token = JwtUser(id, username);
+    console.log('触发了,该函数')
     ctx.body = {
       code: 0,
       message: "success",
       result: {
         id,
-        user_name: username,
+        userName: username,
       },
       token,
     };
