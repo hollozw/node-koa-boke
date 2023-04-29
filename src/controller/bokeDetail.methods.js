@@ -1,8 +1,5 @@
 async function upoadFile(ctx, next) {
-  console.log('-----------------------------')
-  const file = ctx.request.body
-  console.log(file)
-  ctx.body = "上传成功";
+  ctx.body = { code: 0, message: "success", data: "添加成功" };
   await next();
 }
 
